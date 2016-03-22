@@ -8,16 +8,15 @@
  * Factory in the ossuClientApp.
  */
 angular.module('ossuClientApp')
-  .factory('user', function ($log, $timeout, $q, $firebaseObject, Ref, Auth) {
+  .factory('User', function ($log, $timeout, $q, $firebaseObject, Ref, Auth) {
     var User = {};
 
     function createProfile(user) {
-
       var profile = $firebaseObject(Ref.child('profiles/' + user.uid));
 
-      return profile.$loaded().then(function(profileData){
+      return profile.$loaded().then(function (profileData) {
 
-        if(!profileData.email){
+        if (!profileData.email) {
           profile.email = user.github.email;
           profile.name = user.github.displayName;
           profile.avatar = user.github.profileImageURL;
@@ -27,11 +26,14 @@ angular.module('ossuClientApp')
           console.log('User already exists');
         }
       });
-
     }
 
     User.githubLogin = function () {
       return Auth.$authWithOAuthPopup('github', {rememberMe: true}).then(createProfile);
+    };
+
+    User.getUserProfile = function (userId) {
+      return $firebaseObject(Ref.child('profiles/' + userId));
     };
 
     return User;

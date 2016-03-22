@@ -13,7 +13,8 @@
     "angular-route": "^1.3.0",
     "angular-sanitize": "^1.3.0",
     "angular-touch": "^1.3.0",
-    "bootstrap-material-design": "master"
+    "bootstrap-material-design": "master",
+    "font-awesome": "^4.5.0"
   },
   "overrides": {
     "bootstrap-material-design": {
