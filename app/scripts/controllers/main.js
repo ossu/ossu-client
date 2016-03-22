@@ -8,6 +8,6 @@
  * Controller of the ossuClientApp
  */
 angular.module('ossuClientApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.thing = null;
+  .controller('MainCtrl', function () {
+
   });

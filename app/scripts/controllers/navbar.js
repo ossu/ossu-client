@@ -7,10 +7,14 @@
  * Manages authentication to any active providers.
  */
 angular.module('ossuClientApp')
-  .controller('LoginCtrl', function ($scope, User, $location) {
+  .controller('NavbarCtrl', function ($scope, User, $location) {
     $scope.loginWithGithub = function() {
       $scope.err = null;
       User.githubLogin().then(redirect, showError);
+    };
+
+    $scope.logout = function(){
+      User.logout()
     };
 
     function redirect() {

@@ -36,5 +36,9 @@ angular.module('ossuClientApp')
       return $firebaseObject(Ref.child('profiles/' + userId));
     };
 
+    User.logout = function(){
+      return Auth.$unauth();
+    }
+
     return User;
   });

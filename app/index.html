@@ -22,7 +22,7 @@
 
 <!-- Add your site or application content here -->
 <div class="header" ng-cloak="">
-  <div class="navbar navbar-default" role="navigation">
+  <div class="navbar navbar-default" role="navigation" ng-controller="NavbarCtrl">
     <div class="container">
       <div class="navbar-header">
 
@@ -42,10 +42,22 @@
           <li class="active"><a href="#/">Home</a></li>
           <!-- //angularfire -->
           <li>
-            <a ng-hide-auth="" href="#/login">log in</a>
             <a ng-show-auth="" href="#/account">account</a>
           </li>
 
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-hide-auth="">
+            <button class="btn btn-white btn-lg" ng-click="loginWithGithub()">
+              <i class="fa fa-github"></i> Login with github
+            </button>
+          </li>
+          <li ng-show-auth="">
+            <button class="btn btn-white btn-lg" ng-click="logout()">
+              <i class="fa fa-sign-out"></i> logout
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -97,7 +109,7 @@
 <script src="scripts/angularfire/firebase.ref.js"></script>
 <script src="scripts\filters\reverse.js"></script>
 <script src="scripts/angularfire/auth.js"></script>
-<script src="scripts\controllers\login.js"></script>
+<script src="scripts\controllers\navbar.js"></script>
 <script src="scripts\controllers\account.js"></script>
 <script src="scripts/directives/ngShowAuth.js"></script>
 <script src="scripts/directives/ngHideAuth.js"></script>
