@@ -7,18 +7,11 @@
  * Manages authentication to any active providers.
  */
 angular.module('ossuClientApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
-    $scope.oauthLogin = function(provider) {
+  .controller('LoginCtrl', function ($scope, user, $location) {
+    $scope.oauthLogin = function() {
       $scope.err = null;
-      Auth.$authWithOAuthPopup(provider, {rememberMe: true}).then(redirect, showError);
+      user.githubLogin().then(redirect, showError);
     };
-
-    $scope.anonymousLogin = function() {
-      $scope.err = null;
-      Auth.$authAnonymously({rememberMe: true}).then(redirect, showError);
-    };
-
-    
 
     function redirect() {
       $location.path('/account');
@@ -27,6 +20,4 @@ angular.module('ossuClientApp')
     function showError(err) {
       $scope.err = err;
     }
-
-
   });

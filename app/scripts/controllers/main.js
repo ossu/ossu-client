@@ -9,5 +9,5 @@
  */
 angular.module('ossuClientApp')
   .controller('MainCtrl', function ($scope) {
-
+    $scope.thing = null;
   });
