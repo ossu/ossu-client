@@ -1,0 +1,26 @@
+{
+  "name": "ossu-client",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.3.0",
+    "firebase": "2.2.2",
+    "angularfire": "1.0.0",
+    "bootstrap-sass-official": "^3.2.0",
+    "angular-animate": "^1.3.0",
+    "angular-cookies": "^1.3.0",
+    "angular-messages": "^1.3.0",
+    "angular-resource": "^1.3.0",
+    "angular-route": "^1.3.0",
+    "angular-sanitize": "^1.3.0",
+    "angular-touch": "^1.3.0"
+  },
+  "devDependencies": {
+    "mockfirebase": "0.11.0",
+    "angular-mocks": "^1.3.0"
+  },
+  "appPath": "app",
+  "moduleName": "ossuClientApp",
+  "resolutions": {
+    "angular": "1.5.2"
+  }
+}
