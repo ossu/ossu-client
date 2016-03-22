@@ -15,6 +15,16 @@
     "angular-touch": "^1.3.0",
     "bootstrap-material-design": "master"
   },
+  "overrides": {
+    "bootstrap-material-design": {
+      "main": [
+        "sass/bootstrap-material-design.scss",
+        "sass/ripples.scss",
+        "scripts/material.js",
+        "scripts/ripples.js"
+      ]
+    }
+  },
   "devDependencies": {
     "mockfirebase": "0.11.0",
     "angular-mocks": "^1.3.0"
