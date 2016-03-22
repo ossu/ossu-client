@@ -14,7 +14,7 @@ angular.module('ossuClientApp')
     };
 
     $scope.logout = function(){
-      User.logout()
+      User.logout();
     };
 
     function redirect() {

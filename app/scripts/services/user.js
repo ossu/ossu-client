@@ -38,7 +38,7 @@ angular.module('ossuClientApp')
 
     User.logout = function(){
       return Auth.$unauth();
-    }
+    };
 
     return User;
   });

@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form action="">
+
+      <div class="col-xs-4">
+        <div class="form-group">
+          <label for="name" class="col-xs-12">Course title:</label>
+          <div class="col-xs-12">
+            <input type="text" id="name" class="form-control" ng-model="course.title">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="form-group">
+          <label for="link" class="col-xs-12">Course link:</label>
+          <div class="col-xs-12">
+            <input type="text" id="link" class="form-control" ng-model="course.link">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="form-group">
+          <label for="category" class="col-xs-12">Course category:</label>
+          <div class="col-xs-12">
+            <select name="category" id="category" class="form-control" ng-model="course.category" ng-options="category for category in categories">
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="form-group">
+          <label for="duration" class="col-xs-12">Duration:</label>
+          <div class="col-xs-12">
+            <input type="text" id="duration" class="form-control" ng-model="course.duration">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="form-group">
+          <label for="effort" class="col-xs-12">Effort:</label>
+          <div class="col-xs-12">
+            <input type="text" id="effort" class="form-control" ng-model="course.effort">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="form-group">
+          <label for="effort" class="col-xs-12">Submit:</label>
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary btn-raised">Submit</button>
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>
