@@ -39,9 +39,9 @@
       <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#/">Home</a></li>
-          <li><a href="#/curriculum">Curriculum</a></li>
-          <li>
+          <li active-menu-path=""><a href="#/">Home</a></li>
+          <li active-menu-path="curriculum"><a href="#/curriculum">Curriculum</a></li>
+          <li active-menu-path="account">
             <a ng-show-auth="" href="#/account">My progress</a>
           </li>
 
@@ -117,6 +117,7 @@
 <script src="scripts/services/user.js"></script>
 <script src="scripts/services/course.js"></script>
 <script src="scripts/controllers/curriculum.js"></script>
+<script src="scripts/directives/activemenupath.js"></script>
 <!-- endbuild -->
 
 <script>
