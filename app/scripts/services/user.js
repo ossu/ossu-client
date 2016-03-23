@@ -8,24 +8,39 @@
  * Factory in the ossuClientApp.
  */
 angular.module('ossuClientApp')
-  .factory('User', function ($log, $timeout, $q, $firebaseObject, Ref, Auth) {
+  .factory('User', function ($log, $timeout, $q, $firebaseObject, Ref, Auth, Course) {
     var Authentication = {
       user: {},
 
       createProfile: function (uid, user) {
-        var profileRef = $firebaseObject(Ref.child('profiles').child(uid));
+        var profileRef = $firebaseObject(Ref.child('profiles').child(uid)),
+          courses = Course.getCourses();
 
-        profileRef.$loaded().then(function (profile) {
+        return $q.all([profileRef.$loaded(), courses.$loaded()]).then(function (data) {
+          var profile = data[0],
+            courseArr = data[1];
+
           if (!profile.email) {
-            profileRef.email = user.email;
-            profileRef.name = user.displayName;
-            profileRef.avatar = user.profileImageURL;
+            $q.all(courseArr.map(function (course) {
+              var courseId = course.$id,
+                courseRef = $firebaseObject(Ref.child('profiles').child(uid).child('courses').child(courseId));
 
-            return profileRef.$save();
+              courseRef.status = 'Not started';
+              courseRef.repo = 'Empty';
+
+              return courseRef.$save();
+            })).then(function () {
+              profileRef.email = user.email;
+              profileRef.name = user.displayName;
+              profileRef.avatar = user.profileImageURL;
+              return profileRef.$save();
+            });
+
           } else {
             console.log('Profile already exists');
           }
         });
+
       },
 
       githubLogin: function () {
