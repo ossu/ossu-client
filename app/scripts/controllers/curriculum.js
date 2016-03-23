@@ -10,6 +10,7 @@
 angular.module('ossuClientApp')
   .controller('CurriculumCtrl', function ($scope, Course, User) {
     $scope.courses = null;
+    $scope.curriculumLoaded = false;
 
     $scope.categories = [
       'Introduction to Computer Science',
@@ -46,6 +47,7 @@ angular.module('ossuClientApp')
 
     Course.getCourses().$loaded().then(function(data){
       $scope.courses = data;
+      $scope.curriculumLoaded = true;
     });
 
     $scope.startCourse = function(){

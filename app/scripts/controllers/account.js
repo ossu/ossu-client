@@ -9,8 +9,4 @@
 angular.module('ossuClientApp')
   .controller('AccountCtrl', function ($scope, Auth, User) {
     $scope.user = User.user;
-
-    Auth.$onAuth(function () {
-      $scope.$apply();
-    });
   });

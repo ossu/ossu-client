@@ -1,21 +1,10 @@
-<style>
-  table td:first-child {
-    width: 60%
-  }
-
-  table td:nth-child(2) {
-    text-align: right;
-    width: 20%
-  }
-
-  table td:last-child {
-    text-align: right;
-    width: 20%
-  }
-</style>
-
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-12" ng-show="!curriculumLoaded">
+    <p class="loading text-center">
+      Loading Curriculum <i class="fa fa-spinner"></i>
+    </p>
+  </div>
+  <div class="col-xs-12" ng-show="curriculumLoaded">
     <h1>Computer Science <button class="btn btn-primary btn-lg btn-raised" ng-click="startCourse()">Start studying</button></h1>
     <h2>Curriculum</h2>
 
