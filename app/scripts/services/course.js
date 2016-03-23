@@ -10,10 +10,15 @@
 angular.module('ossuClientApp')
   .factory('Course', function (Ref, $firebaseArray) {
     var Course = {},
-      courses = $firebaseArray(Ref.child('courses'));
+      ref = Ref.child('courses'),
+      courses = $firebaseArray(ref);
 
     Course.addCourse = function(course){
       return courses.$add(course);
+    };
+
+    Course.getCourses = function(){
+      return courses;
     };
 
     return Course;

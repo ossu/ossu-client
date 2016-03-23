@@ -1,63 +1,566 @@
+<style>
+  table td:first-child{width: 60%}
+  table td:nth-child(2){text-align: right;width: 20%}
+  table td:last-child{text-align: right; width: 20%}
+</style>
+
 <div class="row">
   <div class="col-xs-12">
-    <form ng-submit="addCourse(course)">
+    <h2>Curriculum</h2>
+    <hr>
 
-      <div class="col-xs-4">
-        <div class="form-group">
-          <label for="name" class="col-xs-12">Course title:</label>
-          <div class="col-xs-12">
-            <input type="text" id="name" class="form-control" ng-model="course.title">
-          </div>
-        </div>
-      </div>
+    <h3>Introduction to computer science</h3>
 
-      <div class="col-xs-4">
-        <div class="form-group">
-          <label for="link" class="col-xs-12">Course link:</label>
-          <div class="col-xs-12">
-            <input type="text" id="link" class="form-control" ng-model="course.link">
-          </div>
-        </div>
-      </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Introduction to computer science'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
 
-      <div class="col-xs-4">
-        <div class="form-group">
-          <label for="category" class="col-xs-12">Course category:</label>
-          <div class="col-xs-12">
-            <select name="category" id="category" class="form-control" ng-model="course.category" ng-options="category for category in categories">
-            </select>
-          </div>
-        </div>
-      </div>
+    <h3>Math (Mathematical Thinking)</h3>
 
-      <div class="col-xs-4">
-        <div class="form-group">
-          <label for="duration" class="col-xs-12">Duration:</label>
-          <div class="col-xs-12">
-            <input type="text" id="duration" class="form-control" ng-model="course.duration">
-          </div>
-        </div>
-      </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Math (Mathematical Thinking)'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
 
-      <div class="col-xs-4">
-        <div class="form-group">
-          <label for="effort" class="col-xs-12">Effort:</label>
-          <div class="col-xs-12">
-            <input type="text" id="effort" class="form-control" ng-model="course.effort">
-          </div>
-        </div>
-      </div>
+    <h3>Program Design</h3>
 
-      <div class="col-xs-4">
-        <div class="form-group">
-          <label for="effort" class="col-xs-12">Submit:</label>
-          <div class="col-xs-12">
-            <button type="submit" class="btn btn-primary btn-raised">Submit</button>
-          </div>
-        </div>
-      </div>
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Program Design'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Math (Discrete Math)</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Math (Discrete Math)'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Algorithms</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Algorithms'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Programming Paradigms</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Programming Paradigms'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Software Testing</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Software Testing'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Math (Calculus)</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Math (Calculus)'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Theory</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Theory'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Software Engineering</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Software Engineering'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Math (Probability)</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Math (Probability)'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Computer Architecture</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Computer Architecture'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Operating Systems</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Operating Systems'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Computer Networks</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Computer Networks'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Databases</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Databases'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Cloud Computing</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Cloud Computing'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Math (Linear Algebra)</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Math (Linear Algebra)'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Cryptography</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Cryptography'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Security</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Security'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Compilers</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Compilers'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Parallel Computing</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Parallel Computing'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>UX Design</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'UX Design'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Computer Graphics</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Computer Graphics'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Artificial Intelligence</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Artificial Intelligence'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Machine Learning</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Machine Learning'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Natural Language Processing</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Natural Language Processing'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Big Data</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Big Data'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Data Mining</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Data Mining'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>Internet of Things</h3>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td>Course</td>
+        <td>Duration</td>
+        <td>Effort</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in courses | filter:'Internet of Things'">
+        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+        <td>{{course.duration}}</td>
+        <td>{{course.effort}}</td>
+      </tr>
+      </tbody>
+    </table>
 
 
-    </form>
+
   </div>
 </div>
