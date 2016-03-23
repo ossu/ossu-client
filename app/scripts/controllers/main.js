@@ -47,8 +47,5 @@ angular.module('ossuClientApp')
 
     Course.getCourses().$loaded().then(function(data){
       $scope.courses = data;
-    })
-
-
-
+    });
   });

@@ -9,36 +9,48 @@
  */
 angular.module('ossuClientApp')
   .factory('User', function ($log, $timeout, $q, $firebaseObject, Ref, Auth) {
-    var User = {};
+    var Authentication = {
+      user: {},
 
-    function createProfile(user) {
-      var profile = $firebaseObject(Ref.child('profiles/' + user.uid));
+      createProfile: function (uid, user) {
+        var profileRef = $firebaseObject(Ref.child('profiles').child(uid));
 
-      return profile.$loaded().then(function (profileData) {
+        profileRef.$loaded().then(function (profile) {
+          if (!profile.email) {
+            profileRef.email = user.email;
+            profileRef.name = user.displayName;
+            profileRef.avatar = user.profileImageURL;
 
-        if (!profileData.email) {
-          profile.email = user.github.email;
-          profile.name = user.github.displayName;
-          profile.avatar = user.github.profileImageURL;
+            return profileRef.$save();
+          } else {
+            console.log('Profile already exists');
+          }
+        });
+      },
 
-          return profile.$save();
-        } else {
-          console.log('User already exists');
+      githubLogin: function () {
+        return Auth.$authWithOAuthPopup('github', {rememberMe: true}).then(function (data) {
+          return Authentication.createProfile(data.uid, data.github);
+        });
+      },
+
+      logout: function () {
+        return Auth.$unauth();
+      }
+    };
+
+    Auth.$onAuth(function (data) {
+      if (data) {
+        angular.copy(data, Authentication.user);
+        Authentication.user.profile = $firebaseObject(Ref.child('profiles').child(data.uid));
+
+      } else {
+        if (Authentication.user && Authentication.user.profile) {
+          Authentication.user.profile.$destroy();
         }
-      });
-    }
+        angular.copy({}, Authentication.user);
+      }
+    });
 
-    User.githubLogin = function () {
-      return Auth.$authWithOAuthPopup('github', {rememberMe: true}).then(createProfile);
-    };
-
-    User.getUserProfile = function (userId) {
-      return $firebaseObject(Ref.child('profiles/' + userId));
-    };
-
-    User.logout = function(){
-      return Auth.$unauth();
-    };
-
-    return User;
+    return Authentication;
   });

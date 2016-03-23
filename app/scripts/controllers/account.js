@@ -7,10 +7,10 @@
  * Provides rudimentary account management functions.
  */
 angular.module('ossuClientApp')
-  .controller('AccountCtrl', function ($scope, user, User, Auth) {
-    $scope.logout = function() { Auth.$unauth(); };
+  .controller('AccountCtrl', function ($scope, User, Auth) {
+    $scope.user = User.user;
 
-    var profile = User.getUserProfile(user.uid);
-
-    profile.$bindTo($scope, 'profile');
+    Auth.$onAuth(function(){
+      $scope.$apply();
+    });
   });

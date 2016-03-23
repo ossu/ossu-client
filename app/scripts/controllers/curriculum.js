@@ -8,7 +8,7 @@
  * Controller of the ossuClientApp
  */
 angular.module('ossuClientApp')
-  .controller('CurriculumCtrl', function ($scope, Course) {
+  .controller('CurriculumCtrl', function ($scope, Course, User) {
     $scope.courses = null;
 
     $scope.categories = [
@@ -46,8 +46,10 @@ angular.module('ossuClientApp')
 
     Course.getCourses().$loaded().then(function(data){
       $scope.courses = data;
-    })
+    });
 
-
+    $scope.startCourse = function(){
+      User.copyCurriculum();
+    };
 
   });
