@@ -3,5 +3,23 @@
     <p><img ng-src="{{user.profile.avatar}}" alt="{{user.profile.name}}" class="img-thumbnail"></p>
     <h3 class="text-center">{{user.profile.name}}</h3>
   </div>
-  <div class="col-sm-8 col-md-9"></div>
+  <div class="col-sm-8 col-md-9">
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Course</th>
+        <th>Status</th>
+        <th>Link to repository</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="course in user.profile.courses">
+        <td>{{course.title}}</td>
+        <td>{{course.status}}</td>
+        <td>{{course.repo}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

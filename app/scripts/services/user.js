@@ -23,8 +23,14 @@ angular.module('ossuClientApp')
           if (!profile.email) {
             $q.all(courseArr.map(function (course) {
               var courseId = course.$id,
+                courseTitle = course.title,
+                courseLink = course.link,
+                courseCat = course.category,
                 courseRef = $firebaseObject(Ref.child('profiles').child(uid).child('courses').child(courseId));
 
+              courseRef.link = courseLink;
+              courseRef.title = courseTitle;
+              courseRef.category = courseCat;
               courseRef.status = 'Not started';
               courseRef.repo = 'Empty';
 
@@ -40,7 +46,6 @@ angular.module('ossuClientApp')
             console.log('Profile already exists');
           }
         });
-
       },
 
       githubLogin: function () {
