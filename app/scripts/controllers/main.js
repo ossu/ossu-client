@@ -8,7 +8,7 @@
  * Controller of the ossuClientApp
  */
 angular.module('ossuClientApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, Course) {
 
     $scope.course = {};
 
@@ -46,4 +46,14 @@ angular.module('ossuClientApp')
     ];
 
     $scope.course.category = $scope.categories[0];
+
+
+    $scope.addCourse = function (course) {
+      Course.addCourse(course).then(function () {
+        course.title = '';
+        course.link = '';
+        course.duration = '';
+        course.effort = '';
+      });
+    };
   });
