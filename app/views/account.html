@@ -1,7 +1,7 @@
-<div class="row" ng-cloak>
+<div class="row">
   <div class="col-md-3 col-sm-4">
     <p><img ng-src="{{user.profile.avatar}}" alt="{{user.profile.name}}" class="img-thumbnail"></p>
-    <h3 class="text-center">{{user.profile.name}}</h3>
+    <h3 class="text-center"><i class="fa fa-user"></i> {{user.profile.name}}</h3>
   </div>
 
   <div class="col-sm-8 col-md-9">
@@ -12,46 +12,52 @@
       </div>
     </div>
 
+    <ul class="list-unstyled user-courses">
 
-    <table class="table table-inverse table-condensed">
-      <thead>
-      <tr>
-        <th>Course</th>
-        <th>Status</th>
-        <th>Link to repository</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="course in courses | filter:coursefilter">
-        <td>{{course.title}}</td>
-        <td>
-          <div ng-hide="edit[course.$id]">{{course.status}}</div>
-          <div class="form-group" ng-show="edit[course.$id]">
-            <select name="" id="" class="form-control">
-              <option value="">Not started</option>
-              <option value="">In progress</option>
-              <option value="">Finished</option>
-            </select>
+      <li class="user-courses__header">
+        <div class="row">
+          <div class="col-md-4"><h3>Title</h3></div>
+          <div class="col-md-4"><h3>Link to repository</h3></div>
+          <div class="col-md-2"><h3>Status</h3></div>
+        </div>
+      </li>
+
+      <li class="user-courses__course" ng-repeat="course in courses | filter:coursefilter">
+        <div class="row">
+          <div class="col-md-4"><a ng-href="{{course.link}}">{{course.title}}</a></div>
+          <div class="col-md-4">
+            <div ng-hide="edit[course.$id]">{{course.repo}}</div>
+            <div class="form-group label-floating is-empty" ng-show="edit[course.$id]">
+              <label class="control-label" for="courserepo">Provide a link to repo</label>
+              <input type="text" id="courserepo" class="form-control" ng-model="newCourse.repo">
+            </div>
           </div>
-        </td>
-        <td>
-          <div ng-hide="edit[course.$id]">{{course.repo}}</div>
-          <div class="form-group" ng-show="edit[course.$id]">
-            <input type="text" class="form-control">
+          <div class="col-md-2">
+            <div ng-hide="edit[course.$id]">{{course.status}}</div>
+            <div class="form-group" ng-show="edit[course.$id]">
+              <select name="" id="" class="form-control" ng-model="newCourse.status">
+                <option value="0">Not started</option>
+                <option value="1">In progress</option>
+                <option value="2">Finished</option>
+              </select>
+            </div>
           </div>
-        </td>
-        <td>
-          <div ng-hide="edit[course.$id]">
-            <button class="btn btn-sm btn-warning" ng-click="enableEditMode(course)">Edit</button>
+          <div class="col-md-2 text-center">
+            <div ng-hide="edit[course.$id]">
+              <button class="btn btn-sm btn-warning" ng-click="enableEditMode(course)"><i class="fa fa-pencil"></i>
+              </button>
+            </div>
+            <div ng-show="edit[course.$id]">
+              <button class="btn btn-sm btn-danger" ng-click="discard(course)"><i class="fa fa-ban"></i></button>
+              <button class="btn btn-sm btn-success" ng-click="updateUserCourse(course.$id, newCourse)"><i
+                class="fa fa-check"></i></button>
+            </div>
           </div>
-          <div ng-show="edit[course.$id]">
-            <button class="btn btn-sm btn-danger" ng-click="discard(course)"><i class="fa fa-ban"></i></button>
-            <button class="btn btn-sm btn-success" ng-click="confirm()"><i class="fa fa-check"></i></button>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+        </div>
+      </li>
+    </ul>
+
+
+
   </div>
 </div>

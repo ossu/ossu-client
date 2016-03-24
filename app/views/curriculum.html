@@ -15,22 +15,19 @@
       <div class="panel-heading"><h3 class="panel-title">{{category}}</h3></div>
 
       <div class="panel-body">
-        <table class="table">
-          <thead>
-          <tr>
-            <td>Course</td>
-            <td>Duration</td>
-            <td>Effort</td>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="course in courses | filter:category">
-            <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
-            <td>{{course.duration}}</td>
-            <td>{{course.effort}}</td>
-          </tr>
-          </tbody>
-        </table>
+        <div class="row">
+          <div class="col-md-6"><h3>Course</h3></div>
+          <div class="col-md-3 text-right"><h3>Duration</h3></div>
+          <div class="col-md-3 text-right"><h3>Effort</h3></div>
+        </div>
+
+        <div class="row" ng-repeat="course in courses | filter:category">
+          <div class="col-md-6"><a ng-href="{{course.link}}">{{course.title}}</a></div>
+          <div class="col-md-3 text-right">{{course.duration}}</div>
+          <div class="col-md-3 text-right">{{course.effort}}</div>
+        </div>
+
+
       </div>
     </div>
 
