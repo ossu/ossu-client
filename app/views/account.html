@@ -8,7 +8,7 @@
     <div class="form-group">
       <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-search"></i></div>
-        <input type="text" class="form-control" placeholder="Search courses" ng-model="coursefilter">
+        <input type="text" class="form-control" placeholder="Search courses e.g. math, finished, intro" ng-model="coursefilter">
       </div>
     </div>
 
@@ -36,9 +36,9 @@
             <div ng-hide="edit[course.$id]">{{course.status}}</div>
             <div class="form-group" ng-show="edit[course.$id]">
               <select name="" id="" class="form-control" ng-model="newCourse.status">
-                <option value="0">Not started</option>
-                <option value="1">In progress</option>
-                <option value="2">Finished</option>
+                <option value="Not started">Not started</option>
+                <option value="In progress">In progress</option>
+                <option value="Finished">Finished</option>
               </select>
             </div>
           </div>
@@ -56,7 +56,6 @@
         </div>
       </li>
     </ul>
-
 
 
   </div>

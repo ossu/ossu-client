@@ -1,0 +1,17 @@
+.user-courses {
+  &__header {}
+
+  &__course {
+    padding: 1.5rem 0;
+
+    border-bottom: 1px solid $gray-lighter;
+
+    .form-group {
+      margin: 0;
+    }
+
+    .btn {
+      margin: 0;
+    }
+  }
+}

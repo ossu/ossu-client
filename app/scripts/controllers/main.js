@@ -8,9 +8,14 @@
  * Controller of the ossuClientApp
  */
 angular.module('ossuClientApp')
-  .controller('MainCtrl', function ($scope, Course) {
+  .controller('MainCtrl', function ($scope, $location, User) {
+    function redirect() {
+      $location.path('/account');
+    }
 
-    $scope.courses = null;
+    function showError(err) {
+      $scope.err = err;
+    }
 
     $scope.categories = [
       'Introduction to Computer Science',
@@ -45,7 +50,9 @@ angular.module('ossuClientApp')
       'Internet of Things'
     ];
 
-    Course.getCourses().$loaded().then(function(data){
-      $scope.courses = data;
-    });
+    $scope.githubLogin = function () {
+      $scope.err = null;
+      User.githubLogin().then(redirect, showError);
+    };
+
   });
