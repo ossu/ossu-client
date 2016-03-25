@@ -48,6 +48,10 @@ angular.module('ossuClientApp')
         });
       },
 
+      getUserByUid: function (userUid) {
+        return $firebaseObject(Ref.child('profiles').child(userUid));
+      },
+
       githubLogin: function () {
         return Auth.$authWithOAuthPopup('github', {rememberMe: true}).then(function (data) {
           return Authentication.createProfile(data.uid, data.github);

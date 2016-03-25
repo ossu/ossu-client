@@ -70,7 +70,7 @@ angular.module('ossuClientApp')
         controller: 'AccountCtrl'
       })
       .when('/profile/:userUid', {
-        templateUrl: 'views/user.html',
+        templateUrl: 'views/profile.html',
         controller: 'ProfileCtrl'
       })
       .otherwise({redirectTo: '/'});

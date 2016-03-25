@@ -8,8 +8,14 @@
  * Controller of the ossuClientApp
  */
 angular.module('ossuClientApp')
-  .controller('ProfileCtrl', function ($scope, $routeParams) {
+  .controller('ProfileCtrl', function ($scope, $routeParams, User) {
     var userUid = $routeParams.userUid;
 
-    console.log(userUid);
+    $scope.userCourses = null;
+    $scope.userProfile = null;
+
+    User.getUserByUid(userUid).$loaded().then(function (user) {
+      $scope.userCourses = user.courses;
+      $scope.userProfile = user;
+    });
   });
