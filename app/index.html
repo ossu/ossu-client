@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body ng-app="ossuClientApp">
+<body ng-app="ossuClientApp" class="main-body">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
   your browser</a> to improve your experience.</p>
@@ -64,7 +64,30 @@
   </div>
 </div>
 
-<div ng-view=""></div>
+<div ng-view="" class="main-content"></div>
+
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-inline">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="https://github.com/SergeyKhval/ossu-client">Contribute</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-right">
+        <p>&copy; Open Source Society</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
