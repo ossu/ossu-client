@@ -20,6 +20,12 @@ and comment everything out in that file.
 
 Now you can run `grunt serve` to start development server.
 
+## Firebase
+This project uses [Firebase](https://www.firebase.com/) as a backend server. While the project is in development stage,
+our data can be changed / deleted / purged or whatever other bad thing can happen. So you can run it on your own 
+instance of Firebase service. Path to Firebase is stored here `app/scripts/angularfire/config.js` in `FBURL` constant.
+You can change it as you need and have your own backend.
+
 ## Contributing
 
 Currently the project is in its early stage. All the work is done inside `dev` branch.
