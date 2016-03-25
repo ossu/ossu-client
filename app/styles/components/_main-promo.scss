@@ -1,0 +1,54 @@
+.main-promo {
+  background-color: $brand-primary;
+
+  padding-bottom: 5rem;
+
+  &__heading {
+    color: $gray-lighter;
+    font-size: 12rem;
+    text-shadow: 1px 1px $gray-base;
+
+    margin-bottom: 0;
+  }
+
+  &__subheading {
+    color: #20124D;
+    font-size: 6rem;
+    text-shadow: 1px 1px $gray-lighter;
+
+    margin-top: 0;
+    margin-bottom: 3rem;
+  }
+
+  &__slogan {
+  }
+}
+
+@media (min-width: $screen-sm-min){
+  .main-promo {
+    &__heading {
+      font-size: 20rem;
+    }
+
+    &__subheading {
+      font-size: 9rem;
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .main-promo {
+
+    &__heading {
+      font-size: 25rem;
+    }
+
+    &__subheading {
+      font-size: 11rem;
+    }
+
+    &__slogan {
+    }
+  }
+}
+

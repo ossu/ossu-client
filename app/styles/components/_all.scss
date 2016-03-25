@@ -7,5 +7,11 @@
 //Loading component
 @import "loading";
 
+//Overrides and styles for navbar component
+@import "navbar";
+
+//Main promo block on home page
+@import "main-promo";
+
 //Course list on account page
 @import "user-courses";

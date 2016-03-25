@@ -1,25 +1,27 @@
-<div class="row">
-  <div class="col-sm-4 col-md-3">
-    <p>
-      <img ng-src="{{userProfile.avatar}}" class="img-thumbnail" alt="{{userProfile.name}}">
-    </p>
-    <h3><i class="fa fa-user"></i> {{userProfile.name}}</h3>
-  </div>
-  <div class="col-sm-8 col-md-9">
-    <h2>Finished courses</h2>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>Course</th>
-        <th>Link to repository</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="course in userCourses">
-        <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
-        <td>{{course.repo}}</td>
-      </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-md-3">
+      <p>
+        <img ng-src="{{userProfile.avatar}}" class="img-thumbnail" alt="{{userProfile.name}}">
+      </p>
+      <h3><i class="fa fa-user"></i> {{userProfile.name}}</h3>
+    </div>
+    <div class="col-sm-8 col-md-9">
+      <h2>Finished courses</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Course</th>
+          <th>Link to repository</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="course in userCourses">
+          <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
+          <td>{{course.repo}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
