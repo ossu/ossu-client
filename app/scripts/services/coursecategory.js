@@ -8,7 +8,7 @@
  * Factory in the ossuClientApp.
  */
 angular.module('ossuClientApp')
-  .factory('courseCategory', function (Ref, $firebaseArray) {
+  .factory('CourseCategory', function (Ref, $firebaseArray) {
     var categoriesRef = Ref.child('courseCategories');
 
     var Categorie = {
