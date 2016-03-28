@@ -30,7 +30,7 @@
             <div class="col-md-4"><a ng-href="{{course.link}}">{{course.title}}</a></div>
             <div class="col-md-4">
               <div ng-hide="edit[course.$id]">{{course.repo}}</div>
-              <div class="form-group label-floating is-empty" ng-show="edit[course.$id]">
+              <div class="form-group label-floating" ng-class="{'is-empty': course.repo === ''}" ng-show="edit[course.$id]">
                 <label class="control-label" for="courserepo">Provide a link to repo</label>
                 <input type="text" id="courserepo" class="form-control" ng-model="course.repo">
               </div>
@@ -64,3 +64,4 @@
     </div>
   </div>
 </div>
+<toaster-container></toaster-container>

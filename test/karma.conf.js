@@ -35,6 +35,7 @@ module.exports = function(config) {
       'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/bootstrap-material-design/scripts/material.js',
       'bower_components/bootstrap-material-design/scripts/ripples.js',
+      'bower_components/AngularJS-Toaster/toaster.js',
       'bower_components/mockfirebase/browser/mockfirebase.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

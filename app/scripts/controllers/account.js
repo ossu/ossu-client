@@ -7,7 +7,7 @@
  * Provides rudimentary account management functions.
  */
 angular.module('ossuClientApp')
-  .controller('AccountCtrl', function ($timeout, $scope, Auth, User, Course) {
+  .controller('AccountCtrl', function (toaster, $timeout, $scope, Auth, User, Course) {
     $scope.courses = null;
     $scope.user = User.user;
     $scope.edit = {};
@@ -26,9 +26,9 @@ angular.module('ossuClientApp')
       $scope.edit[course.$id] = false;
     };
 
-    $scope.update = function(course){
-      $scope.courses.$save(course).then(function(){
-        console.log('course saved');
+    $scope.update = function (course) {
+      $scope.courses.$save(course).then(function () {
+        toaster.pop('success', 'Course saved');
         $scope.edit[course.$id] = false;
       });
     };

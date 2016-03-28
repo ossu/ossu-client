@@ -32,7 +32,7 @@ angular.module('ossuClientApp')
               courseRef.title = courseTitle;
               courseRef.category = courseCat;
               courseRef.status = 'Not started';
-              courseRef.repo = 'Empty';
+              courseRef.repo = '';
 
               return courseRef.$save();
             })).then(function () {
