@@ -25,6 +25,12 @@
         "scripts/material.js",
         "scripts/ripples.js"
       ]
+    },
+    "AngularJS-Toaster": {
+      "main": [
+        "toaster.scss",
+        "toaster.js"
+      ]
     }
   },
   "devDependencies": {
