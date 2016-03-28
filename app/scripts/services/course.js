@@ -21,9 +21,5 @@ angular.module('ossuClientApp')
       return courses;
     };
 
-    Course.getUserCourses = function (userUid) {
-      return $firebaseArray(Ref.child('profiles').child(userUid).child('courses'));
-    };
-
     return Course;
   });

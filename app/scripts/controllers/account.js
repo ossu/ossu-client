@@ -7,13 +7,14 @@
  * Provides rudimentary account management functions.
  */
 angular.module('ossuClientApp')
-  .controller('AccountCtrl', function (toaster, $timeout, $scope, Auth, User, Course) {
+  .controller('AccountCtrl', function (toaster, $timeout, $scope, Auth, User) {
     $scope.courses = null;
     $scope.user = User.user;
     $scope.edit = {};
 
+
     $timeout(function () {
-      Course.getUserCourses($scope.user.uid).$loaded().then(function (data) {
+      User.getUserCourses($scope.user.uid).$loaded().then(function (data) {
         $scope.courses = data;
       });
     });

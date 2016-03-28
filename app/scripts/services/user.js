@@ -8,7 +8,7 @@
  * Factory in the ossuClientApp.
  */
 angular.module('ossuClientApp')
-  .factory('User', function ($log, $timeout, $q, $firebaseObject, Ref, Auth, Course) {
+  .factory('User', function ($log, $timeout, $q, $firebaseObject, $firebaseArray, Ref, Auth, Course) {
     var Authentication = {
       user: {},
 
@@ -37,8 +37,6 @@ angular.module('ossuClientApp')
               return courseRef.$save();
             })).then(function () {
               profileRef.email = user.email;
-              profileRef.name = user.displayName;
-              profileRef.avatar = user.profileImageURL;
               return profileRef.$save();
             });
 
@@ -60,6 +58,10 @@ angular.module('ossuClientApp')
 
       logout: function () {
         return Auth.$unauth();
+      },
+
+      getUserCourses: function (userUid) {
+        return $firebaseArray(Ref.child('profiles').child(userUid).child('courses'));
       }
     };
 
