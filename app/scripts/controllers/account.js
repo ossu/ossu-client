@@ -26,10 +26,10 @@ angular.module('ossuClientApp')
       $scope.edit[course.$id] = false;
     };
 
-    $scope.updateUserCourse = function (courseId, newCourseObj) {
-      Course.updateUserCourse($scope.user.uid, courseId, newCourseObj).then(function () {
-        console.log('Course saved');
-        $scope.edit[courseId] = false;
+    $scope.update = function(course){
+      $scope.courses.$save(course).then(function(){
+        console.log('course saved');
+        $scope.edit[course.$id] = false;
       });
     };
   });

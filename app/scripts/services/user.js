@@ -31,7 +31,7 @@ angular.module('ossuClientApp')
               courseRef.link = courseLink;
               courseRef.title = courseTitle;
               courseRef.category = courseCat;
-              courseRef.status = 0;
+              courseRef.status = 'Not started';
               courseRef.repo = 'Empty';
 
               return courseRef.$save();

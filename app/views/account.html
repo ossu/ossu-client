@@ -32,13 +32,13 @@
               <div ng-hide="edit[course.$id]">{{course.repo}}</div>
               <div class="form-group label-floating is-empty" ng-show="edit[course.$id]">
                 <label class="control-label" for="courserepo">Provide a link to repo</label>
-                <input type="text" id="courserepo" class="form-control" ng-model="newCourse.repo">
+                <input type="text" id="courserepo" class="form-control" ng-model="course.repo">
               </div>
             </div>
             <div class="col-md-2">
               <div ng-hide="edit[course.$id]">{{course.status}}</div>
               <div class="form-group" ng-show="edit[course.$id]">
-                <select name="" id="" class="form-control" ng-model="newCourse.status">
+                <select name="" id="" class="form-control" ng-model="course.status">
                   <option value="Not started">Not started</option>
                   <option value="In progress">In progress</option>
                   <option value="Finished">Finished</option>
@@ -52,7 +52,7 @@
               </div>
               <div ng-show="edit[course.$id]">
                 <button class="btn btn-sm btn-danger" ng-click="discard(course)"><i class="fa fa-ban"></i></button>
-                <button class="btn btn-sm btn-success" ng-click="updateUserCourse(course.$id, newCourse)"><i
+                <button class="btn btn-sm btn-success" ng-click="update(course)"><i
                   class="fa fa-check"></i></button>
               </div>
             </div>

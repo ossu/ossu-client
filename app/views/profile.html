@@ -18,7 +18,7 @@
         <tbody>
         <tr ng-repeat="course in userCourses">
           <td><a ng-href="{{course.link}}">{{course.title}}</a></td>
-          <td>{{course.repo}}</td>
+          <td><a ng-href="{{course.repo}}">{{course.repo}}</a></td>
         </tr>
         </tbody>
       </table>

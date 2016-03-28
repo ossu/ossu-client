@@ -25,16 +25,5 @@ angular.module('ossuClientApp')
       return $firebaseArray(Ref.child('profiles').child(userUid).child('courses'));
     };
 
-    Course.updateUserCourse = function (userUid, courseId, newCourseObj) {
-      var courseRef = $firebaseObject(Ref.child('profiles').child(userUid).child('courses').child(courseId));
-
-      return courseRef.$loaded().then(function () {
-        courseRef.status = newCourseObj.status;
-        courseRef.repo = newCourseObj.repo || '';
-
-        return courseRef.$save();
-      });
-    };
-
     return Course;
   });
