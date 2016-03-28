@@ -12,7 +12,7 @@
     <hr>
 
     <div class="panel panel-primary" ng-repeat="category in categories">
-      <div class="panel-heading"><h3 class="panel-title">{{category}}</h3></div>
+      <div class="panel-heading"><h3 class="panel-title">{{category.title}}</h3></div>
 
       <div class="panel-body">
         <div class="row">
@@ -21,7 +21,7 @@
           <div class="col-md-3 text-right"><h3>Effort</h3></div>
         </div>
 
-        <div class="row" ng-repeat="course in courses | filter:category">
+        <div class="row" ng-repeat="course in courses | filter:category.title">
           <div class="col-md-6"><a ng-href="{{course.link}}">{{course.title}}</a></div>
           <div class="col-md-3 text-right">{{course.duration}}</div>
           <div class="col-md-3 text-right">{{course.effort}}</div>
