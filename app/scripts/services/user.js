@@ -37,6 +37,8 @@ angular.module('ossuClientApp')
               return courseRef.$save();
             })).then(function () {
               profileRef.email = user.email;
+              profileRef.avatar = user.profileImageURL;
+              profileRef.name = user.displayName;
               return profileRef.$save();
             });
 
