@@ -19,5 +19,7 @@ angular.module('ossuClientApp', [
   'firebase',
   'firebase.ref',
   'firebase.auth',
+  'LocalStorageModule',
+  'ui.bootstrap',
   'toaster'
 ]);
