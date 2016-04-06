@@ -9,14 +9,14 @@ You also need Ruby, Sass and Compass. Head [over here](https://github.com/gruntj
 and follow the instructions to set up your environment.
 
 After you got nodejs, Ruby, Sass and Compass install `grunt` and `bower`:
-`$ npm install -g grunt-cli`
-`$ npm install -g bower`
+
+```bash
+$ npm install -g grunt-cli
+$ npm install -g bower
+```
 
 Then `cd` into project's directory and run `npm install` and `bower install`.
 This commands will download all required dependencies.
-
-Unfortunately, there is a small bug in building process. Go to `bower_components/bootstrap-material-design/sass/_import-bs-sass.scss`
-and comment everything out in that file.
 
 Now you can run `grunt serve` to start development server.
 
