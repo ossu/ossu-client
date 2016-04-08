@@ -6,12 +6,17 @@
     </div>
 
     <div class="col-sm-8 col-md-9">
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" ng-style="{'width': (courses | filter:'finished').length / courses.length * 100 + '%'}"></div>
+        <div class="progress-bar progress-bar-warning" ng-style="{'width': (courses | filter:'in progress').length / courses.length * 100 + '%'}"></div>
+      </div>
+
       <p class="lead">Link to my public profile: <a href="#/profile/{{user.uid}}">#/profile/{{user.uid}}</a></p>
+
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-search"></i></div>
-          <input type="text" class="form-control" placeholder="Search courses e.g. math, finished, intro"
-                 ng-model="coursefilter">
+          <input type="text" class="form-control" placeholder="Search courses e.g. math, finished, intro" ng-model="coursefilter">
         </div>
       </div>
 
@@ -19,9 +24,12 @@
 
         <li class="user-courses__header hidden-xs hidden-sm">
           <div class="row">
-            <div class="col-md-4"><h3>Title</h3></div>
-            <div class="col-md-4"><h3>Link to repository</h3></div>
-            <div class="col-md-2"><h3>Status</h3></div>
+            <div class="col-md-4">
+              <h3>Title</h3></div>
+            <div class="col-md-4">
+              <h3>Link to repository</h3></div>
+            <div class="col-md-2">
+              <h3>Status</h3></div>
           </div>
         </li>
 
@@ -52,8 +60,7 @@
               </div>
               <div ng-show="edit[course.$id]">
                 <button class="btn btn-sm btn-danger" ng-click="discard(course)"><i class="fa fa-ban"></i></button>
-                <button class="btn btn-sm btn-success" ng-click="update(course)"><i
-                  class="fa fa-check"></i></button>
+                <button class="btn btn-sm btn-success" ng-click="update(course)"><i class="fa fa-check"></i></button>
               </div>
             </div>
           </div>
