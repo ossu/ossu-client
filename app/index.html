@@ -42,6 +42,7 @@
         <ul class="nav navbar-nav">
           <li active-menu-path=""><a href="#/">Home</a></li>
           <li active-menu-path="curriculum"><a href="#/curriculum">Curriculum</a></li>
+
           <li active-menu-path="account">
             <a ng-show-auth="" href="#/account">My progress</a>
           </li>
@@ -49,6 +50,7 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+          <li active-menu-path="about"><a href="#/about">About</a></li>
           <li ng-hide-auth="">
             <button class="btn btn-white btn-lg" ng-click="loginWithGithub()">
               <i class="fa fa-github"></i> Login with github
@@ -73,13 +75,13 @@
       <div class="col-md-6">
         <ul class="list-inline">
           <li>
-            <a href="/">Home</a>
+            <a href="#/">Home</a>
           </li>
           <li>
             <a href="https://github.com/open-source-society/computer-science">Contribute</a>
           </li>
           <li>
-            <a href="/about">About</a>
+            <a href="#/about">About</a>
           </li>
         </ul>
       </div>
@@ -145,6 +147,7 @@
 <script src="scripts/controllers/profile.js"></script>
 <script src="scripts/services/coursecategory.js"></script>
 <script src="scripts/controllers/mainmodalcontroller.js"></script>
+<script src="scripts/controllers/about.js"></script>
 <!-- endbuild -->
 
 <script>
