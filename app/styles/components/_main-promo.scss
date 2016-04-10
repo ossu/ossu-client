@@ -5,16 +5,20 @@
 
   &__heading {
     color: $gray-lighter;
+    font-family: 'Questrial', sans-serif;
     font-size: 12rem;
-    text-shadow: 1px 1px $gray-base;
+    font-weight: bold;
+    text-shadow: 0 1px $gray-base;
 
     margin-bottom: 0;
   }
 
   &__subheading {
     color: #20124D;
+    font-family: 'Open Sans', sans-serif;
     font-size: 6rem;
-    text-shadow: 1px 1px $gray-lighter;
+    font-weight: bold;
+    text-shadow: 0 1px $gray-lighter;
 
     margin-top: 0;
     margin-bottom: 3rem;
@@ -26,12 +30,16 @@
 
 @media (min-width: $screen-sm-min){
   .main-promo {
+    padding-top: 5rem;
+
     &__heading {
-      font-size: 20rem;
+      font-size: 22rem;
+      line-height: 19rem;
     }
 
     &__subheading {
       font-size: 9rem;
+      line-height: 8rem;
     }
   }
 }
