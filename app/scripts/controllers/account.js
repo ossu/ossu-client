@@ -8,6 +8,12 @@
  */
 angular.module('ossuClientApp')
   .controller('AccountCtrl', function (toaster, $timeout, $scope, Auth, User) {
+    function saveCourses(course, message){
+        $scope.courses.$save(course).then(function(){
+          toaster.pop('success', message);
+        });
+    }
+
     $scope.courses = null;
     $scope.user = User.user;
     $scope.edit = {};
@@ -19,18 +25,11 @@ angular.module('ossuClientApp')
       });
     });
 
-    $scope.enableEditMode = function (course) {
-      $scope.edit[course.$id] = true;
+    $scope.updateStatus = function (course) {
+      saveCourses(course, 'Course status updated');
     };
 
-    $scope.discard = function (course) {
-      $scope.edit[course.$id] = false;
-    };
-
-    $scope.update = function (course) {
-      $scope.courses.$save(course).then(function () {
-        toaster.pop('success', 'Course saved');
-        $scope.edit[course.$id] = false;
-      });
+    $scope.updateRepository = function (course){
+      saveCourses(course, 'Course repository updated');
     };
   });

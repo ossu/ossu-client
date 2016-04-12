@@ -7,8 +7,10 @@
 
     <div class="col-sm-8 col-md-9">
       <div class="progress">
-        <div class="progress-bar progress-bar-success" ng-style="{'width': (courses | filter:'finished').length / courses.length * 100 + '%'}"></div>
-        <div class="progress-bar progress-bar-warning" ng-style="{'width': (courses | filter:'in progress').length / courses.length * 100 + '%'}"></div>
+        <div class="progress-bar progress-bar-success"
+             ng-style="{'width': (courses | filter:'finished').length / courses.length * 100 + '%'}"></div>
+        <div class="progress-bar progress-bar-warning"
+             ng-style="{'width': (courses | filter:'in progress').length / courses.length * 100 + '%'}"></div>
       </div>
 
       <p class="lead">Link to my public profile: <a href="#/profile/{{user.uid}}">#/profile/{{user.uid}}</a></p>
@@ -16,7 +18,8 @@
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-search"></i></div>
-          <input type="text" class="form-control" placeholder="Search for courses e.g. math, finished, intro" ng-model="coursefilter">
+          <input type="text" class="form-control" placeholder="Search for courses e.g. math, finished, intro"
+                 ng-model="coursefilter">
         </div>
       </div>
 
@@ -38,12 +41,14 @@
             <div class="col-md-5"><a ng-href="{{course.link}}">{{course.title}}</a></div>
             <div class="col-md-5">
               <div class="form-group">
-                <input type="text" id="courserepo" class="form-control" ng-model="course.repo" placeholder="Provide a link to repo">
+                <input type="text" id="courserepo" class="form-control" placeholder="Provide a link to repo"
+                       ng-model="course.repo" ng-blur="updateRepository(course)">
               </div>
             </div>
             <div class="col-md-2">
               <div class="form-group">
-                <select name="" id="" class="form-control" ng-model="course.status">
+                <select name="" id="" class="form-control" ng-model="course.status"
+                        ng-change="updateStatus(course)">
                   <option value="Not started">Not started</option>
                   <option value="In progress">In progress</option>
                   <option value="Finished">Finished</option>
