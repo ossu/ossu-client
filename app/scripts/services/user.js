@@ -63,6 +63,12 @@ angular.module('ossuClientApp')
 
       getUserCourses: function (userUid) {
         return $firebaseArray(Ref.child('profiles').child(userUid).child('courses'));
+      },
+
+      addExtraCourse: function(userUid, extraCourse){
+        var extraCourseRef = $firebaseArray(Ref.child('profiles').child(userUid).child('extraCourses'));
+
+        return extraCourseRef.$add(extraCourse);
       }
     };
 

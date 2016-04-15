@@ -8,10 +8,10 @@
  */
 angular.module('ossuClientApp')
   .controller('AccountCtrl', function (toaster, $timeout, $scope, Auth, User) {
-    function saveCourses(course, message){
-        $scope.courses.$save(course).then(function(){
-          toaster.pop('success', message);
-        });
+    function saveCourses(course, message) {
+      $scope.courses.$save(course).then(function () {
+        toaster.pop('success', message);
+      });
     }
 
     $scope.courses = null;
@@ -29,7 +29,13 @@ angular.module('ossuClientApp')
       saveCourses(course, 'Course status updated');
     };
 
-    $scope.updateRepository = function (course){
+    $scope.updateRepository = function (course) {
       saveCourses(course, 'Course repository updated');
+    };
+
+    $scope.addExtraCourse = function (extraCourse) {
+      User.addExtraCourse($scope.user.uid, extraCourse).then(function () {
+        toaster.pop('success', 'Eextra course successfully added');
+      });
     };
   });
