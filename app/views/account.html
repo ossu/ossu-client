@@ -95,6 +95,43 @@
             </div>
           </form>
 
+          <ul class="list-unstyled user-courses">
+
+            <li class="user-courses__header hidden-xs hidden-sm">
+              <div class="row">
+                <div class="col-md-5">
+                  <h3>Title</h3></div>
+                <div class="col-md-5">
+                  <h3>Link to repository</h3></div>
+                <div class="col-md-2">
+                  <h3>Status</h3></div>
+              </div>
+            </li>
+
+            <li class="user-courses__course" ng-repeat="course in extraCourses">
+              <div class="row">
+                <div class="col-md-5"><a ng-href="{{course.link}}">{{course.title}}</a></div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <input type="text" id="courserepo" class="form-control" placeholder="Provide a link to repo"
+                           ng-model="course.repo" ng-blur="updateRepository(course)">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <select name="" id="" class="form-control" ng-model="course.status"
+                            ng-change="updateStatus(course)">
+                      <option value="Not started">Not started</option>
+                      <option value="In progress">In progress</option>
+                      <option value="Finished">Finished</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+
 
 
 
