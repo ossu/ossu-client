@@ -20,12 +20,12 @@ angular.module('ossuClientApp')
 
     var openedModalKey = '653c5f9';
 
-    if (!checkLocalStorage(openedModalKey)) {
+    if (checkLocalStorage(openedModalKey)) {
       $uibModal.open({
         animation: true,
         backdrop: 'static',
         controller: 'MainmodalcontrollerCtrl',
-        templateUrl: '../partials/modal.html',
+        templateUrl: '../partials/homePageModal.html',
         size: 'lg'
       });
 

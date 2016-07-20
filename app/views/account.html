@@ -3,12 +3,17 @@
     <div class="col-md-3 col-sm-4">
       <p><img ng-src="{{user.github.profileImageURL}}" alt="{{user.github.displayName}}" class="img-thumbnail"></p>
       <h3><i class="fa fa-user"></i> {{user.github.displayName}}</h3>
+      <p>
+        <button class="btn btn-danger btn-raised" ng-click="confirmResetProgress()">Reset progress</button>
+      </p>
     </div>
 
     <div class="col-sm-8 col-md-9">
       <div class="progress">
-        <div class="progress-bar progress-bar-success" ng-style="{'width': (courses | filter:'finished').length / courses.length * 100 + '%'}"></div>
-        <div class="progress-bar progress-bar-warning" ng-style="{'width': (courses | filter:'in progress').length / courses.length * 100 + '%'}"></div>
+        <div class="progress-bar progress-bar-success"
+             ng-style="{'width': (courses | filter:'finished').length / courses.length * 100 + '%'}"></div>
+        <div class="progress-bar progress-bar-warning"
+             ng-style="{'width': (courses | filter:'in progress').length / courses.length * 100 + '%'}"></div>
       </div>
 
       <p class="lead">Link to my public profile: <a href="#/profile/{{user.uid}}">#/profile/{{user.uid}}</a></p>
@@ -16,7 +21,8 @@
       <div class="form-group">
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-search"></i></div>
-          <input type="text" class="form-control" placeholder="Search courses e.g. math, finished, intro" ng-model="coursefilter">
+          <input type="text" class="form-control" placeholder="Search courses e.g. math, finished, intro"
+                 ng-model="coursefilter">
         </div>
       </div>
 
@@ -38,7 +44,8 @@
             <div class="col-md-4"><a ng-href="{{course.link}}">{{course.title}}</a></div>
             <div class="col-md-4">
               <div ng-hide="edit[course.$id]">{{course.repo}}</div>
-              <div class="form-group label-floating" ng-class="{'is-empty': course.repo === ''}" ng-show="edit[course.$id]">
+              <div class="form-group label-floating" ng-class="{'is-empty': course.repo === ''}"
+                   ng-show="edit[course.$id]">
                 <label class="control-label" for="courserepo">Provide a link to repo</label>
                 <input type="text" id="courserepo" class="form-control" ng-model="course.repo">
               </div>
