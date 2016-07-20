@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h3 class="modal-title">Reset progress</h3>
+</div>
+<div class="modal-body">
+  <p class="lead bg-danger">If you click reset, all your progress will be lost without a possibility to restore.</p>
+  <p>The curriculum will be updated to the most recent state and you will be able to start from scratch</p>
+  <p>
+    Please type 'reset' into the field below if you understand the consequences and would like to reset your progress
+    <span class="form-group">
+      <input type="text" class="form-control" placeholder="Type 'reset' here" ng-model="confirmReset">
+    </span>
+  </p>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-danger" ng-click="reset()" ng-disabled="confirmReset !== 'reset'">Reset</button>
+  <button class="btn btn-primary btn-raised" ng-click="dismiss()">Cancel</button>
+</div>
