@@ -7,7 +7,7 @@
  * Provides rudimentary account management functions.
  */
 angular.module('ossuClientApp')
-  .controller('AccountCtrl', function (toaster, $timeout, $q, $scope, Auth, User) {
+  .controller('AccountCtrl', function (toaster, $timeout, $q, $scope, $uibModal, Auth, User) {
     function saveCourses(course, message) {
       $scope.courses.$save(course).then(function () {
         toaster.pop('success', message);
@@ -43,4 +43,34 @@ angular.module('ossuClientApp')
         toaster.pop('success', 'Eextra course successfully added');
       });
     };
+
+    $scope.confirmResetProgress = function () {
+      $uibModal.open({
+        templateUrl: '/partials/resetProgressModal.html',
+        controller: 'ResetProgressModalController'
+      });
+    };
   });
+
+//Controller for reset progress modal window
+angular.module('ossuClientApp').controller('ResetProgressModalController', function ($scope, $uibModalInstance, toaster, User) {
+  var user = User.user;
+
+  $scope.reset = function () {
+    return User.deleteCourses(user.uid)
+      .then(function () {
+        return User.copyCourses(user.uid);
+      })
+      .then(function () {
+        $uibModalInstance.dismiss();
+        toaster.pop('success', 'Progress reset');
+      })
+      .catch(function (err) {
+        toaster.pop('error', err);
+      });
+  };
+
+  $scope.dismiss = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+});

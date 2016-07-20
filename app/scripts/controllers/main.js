@@ -18,14 +18,14 @@ angular.module('ossuClientApp')
       localStorageService.set(key, value);
     }
 
-    var openedModalKey = '653c5f9';
+    var openedModalKey = '7296425a43a9208958f0473cc733489c67e8a88a';
 
     if (!checkLocalStorage(openedModalKey)) {
       $uibModal.open({
         animation: true,
         backdrop: 'static',
         controller: 'MainmodalcontrollerCtrl',
-        templateUrl: '../partials/modal.html',
+        templateUrl: '../partials/homePageModal.html',
         size: 'lg'
       });
 

@@ -3,6 +3,9 @@
     <div class="col-md-3 col-sm-4">
       <p><img ng-src="{{user.github.profileImageURL}}" alt="{{user.github.displayName}}" class="img-thumbnail"></p>
       <h3><i class="fa fa-user"></i> {{user.github.displayName}}</h3>
+      <p>
+        <button class="btn btn-danger btn-raised" ng-click="confirmResetProgress()">Reset progress</button>
+      </p>
     </div>
 
     <div class="col-sm-8 col-md-9">

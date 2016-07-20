@@ -23,14 +23,11 @@ angular.module('ossuClientApp')
           if (!profile.name) {
             $q.all(courseArr.map(function (course) {
               var courseId = course.$id,
-                courseTitle = course.title,
-                courseLink = course.link,
-                courseCat = course.category,
                 courseRef = $firebaseObject(Ref.child('profiles').child(uid).child('courses').child(courseId));
 
-              courseRef.link = courseLink;
-              courseRef.title = courseTitle;
-              courseRef.category = courseCat;
+              courseRef.link = course.link;
+              courseRef.title = course.title;
+              courseRef.category = course.category;
               courseRef.status = 'Not started';
               courseRef.repo = '';
 
@@ -44,6 +41,29 @@ angular.module('ossuClientApp')
           } else {
             console.log('Profile already exists');
           }
+        });
+      },
+
+      deleteCourses: function (userUid) {
+        return $firebaseObject(Ref.child('profiles').child(userUid).child('courses')).$remove();
+      },
+
+      copyCourses: function (uid) {
+        var courses = Course.getCourses();
+
+        return courses.$loaded().then(function (courseArr) {
+          return $q.all(courseArr.map(function (course) {
+            var courseId = course.$id,
+              courseRef = $firebaseObject(Ref.child('profiles').child(uid).child('courses').child(courseId));
+
+            courseRef.link = course.link;
+            courseRef.title = course.title;
+            courseRef.category = course.category;
+            courseRef.status = 'Not started';
+            courseRef.repo = '';
+
+            return courseRef.$save();
+          }));
         });
       },
 
