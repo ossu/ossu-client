@@ -3,69 +3,143 @@
     <div class="col-md-3 col-sm-4">
       <p><img ng-src="{{user.github.profileImageURL}}" alt="{{user.github.displayName}}" class="img-thumbnail"></p>
       <h3><i class="fa fa-user"></i> {{user.github.displayName}}</h3>
+      <p>
+        <button class="btn btn-danger btn-raised" ng-click="confirmResetProgress()">Reset progress</button>
+      </p>
     </div>
 
     <div class="col-sm-8 col-md-9">
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" ng-style="{'width': (courses | filter:'finished').length / courses.length * 100 + '%'}"></div>
-        <div class="progress-bar progress-bar-warning" ng-style="{'width': (courses | filter:'in progress').length / courses.length * 100 + '%'}"></div>
-      </div>
-
       <p class="lead">Link to my public profile: <a href="#/profile/{{user.uid}}">#/profile/{{user.uid}}</a></p>
 
-      <div class="form-group">
-        <div class="input-group">
-          <div class="input-group-addon"><i class="fa fa-search"></i></div>
-          <input type="text" class="form-control" placeholder="Search courses e.g. math, finished, intro" ng-model="coursefilter">
-        </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success"
+             ng-style="{'width': (courses | filter:'finished').length / courses.length * 100 + '%'}"></div>
+        <div class="progress-bar progress-bar-warning"
+             ng-style="{'width': (courses | filter:'in progress').length / courses.length * 100 + '%'}"></div>
       </div>
 
-      <ul class="list-unstyled user-courses">
 
-        <li class="user-courses__header hidden-xs hidden-sm">
-          <div class="row">
-            <div class="col-md-4">
-              <h3>Title</h3></div>
-            <div class="col-md-4">
-              <h3>Link to repository</h3></div>
-            <div class="col-md-2">
-              <h3>Status</h3></div>
-          </div>
-        </li>
 
-        <li class="user-courses__course" ng-repeat="course in courses | filter:coursefilter">
-          <div class="row">
-            <div class="col-md-4"><a ng-href="{{course.link}}">{{course.title}}</a></div>
-            <div class="col-md-4">
-              <div ng-hide="edit[course.$id]">{{course.repo}}</div>
-              <div class="form-group label-floating" ng-class="{'is-empty': course.repo === ''}" ng-show="edit[course.$id]">
-                <label class="control-label" for="courserepo">Provide a link to repo</label>
-                <input type="text" id="courserepo" class="form-control" ng-model="course.repo">
-              </div>
-            </div>
-            <div class="col-md-2">
-              <div ng-hide="edit[course.$id]">{{course.status}}</div>
-              <div class="form-group" ng-show="edit[course.$id]">
-                <select name="" id="" class="form-control" ng-model="course.status">
-                  <option value="Not started">Not started</option>
-                  <option value="In progress">In progress</option>
-                  <option value="Finished">Finished</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-md-2 text-center">
-              <div ng-hide="edit[course.$id]">
-                <button class="btn btn-sm btn-warning" ng-click="enableEditMode(course)"><i class="fa fa-pencil"></i>
-                </button>
-              </div>
-              <div ng-show="edit[course.$id]">
-                <button class="btn btn-sm btn-danger" ng-click="discard(course)"><i class="fa fa-ban"></i></button>
-                <button class="btn btn-sm btn-success" ng-click="update(course)"><i class="fa fa-check"></i></button>
-              </div>
+      <uib-tabset active="active" type="pills">
+        <uib-tab index="0" heading="Main curriculum" classes="withripples">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-addon"><i class="fa fa-search"></i></div>
+              <input type="text" class="form-control" placeholder="Search for courses e.g. math, finished, intro"
+                     ng-model="coursefilter">
             </div>
           </div>
-        </li>
-      </ul>
+
+          <ul class="list-unstyled user-courses">
+
+            <li class="user-courses__header hidden-xs hidden-sm">
+              <div class="row">
+                <div class="col-md-5">
+                  <h3>Title</h3></div>
+                <div class="col-md-5">
+                  <h3>Link to repository</h3></div>
+                <div class="col-md-2">
+                  <h3>Status</h3></div>
+              </div>
+            </li>
+
+            <li class="user-courses__course" ng-repeat="course in courses | filter:coursefilter">
+              <div class="row">
+                <div class="col-md-5"><a ng-href="{{course.link}}">{{course.title}}</a></div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <input type="text" id="courserepo" class="form-control" placeholder="Provide a link to repo"
+                           ng-model="course.repo" ng-blur="updateRepository(course)">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <select name="" id="" class="form-control" ng-model="course.status"
+                            ng-change="updateStatus(course)">
+                      <option value="Not started">Not started</option>
+                      <option value="In progress">In progress</option>
+                      <option value="Finished">Finished</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+        </uib-tab>
+        <uib-tab index="1" heading="Extra courses">
+          <p class="lead">
+            If you have completed any additional courses and want them to appear in your profile, please, add them here.
+            This courses won't count towards your overall progress.
+          </p>
+
+          <form ng-submit="addExtraCourse(extraCourse)">
+            <div class="form-group">
+              <label for="courseTitle" class="control-label">Course title:</label>
+              <input type="text" id="courseTitle" class="form-control" placeholder="e.g. Approximation Algorithms"
+                     ng-model="extraCourse.title">
+            </div>
+
+            <div class="form-group">
+              <label for="courseLink" class="control-label">Course link:</label>
+              <input type="text" id="courseLink" class="form-control" placeholder="Link to your course"
+                     ng-model="extraCourse.link">
+            </div>
+
+            <div class="form-group">
+              <label for="extraCourseRepo" class="control-label">Confirmation of accomplishment:</label>
+              <input type="text" id="extraCourseRepo" class="form-control" placeholder="Link to certificate, code repository etc."
+                     ng-model="extraCourse.confirmationLink">
+
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-success btn-raised">Add course</button>
+            </div>
+          </form>
+
+          <ul class="list-unstyled user-courses">
+
+            <li class="user-courses__header hidden-xs hidden-sm">
+              <div class="row">
+                <div class="col-md-5">
+                  <h3>Title</h3></div>
+                <div class="col-md-5">
+                  <h3>Link to repository</h3></div>
+                <div class="col-md-2">
+                  <h3>Status</h3></div>
+              </div>
+            </li>
+
+            <li class="user-courses__course" ng-repeat="course in extraCourses">
+              <div class="row">
+                <div class="col-md-5"><a ng-href="{{course.link}}">{{course.title}}</a></div>
+                <div class="col-md-5">
+                  <div class="form-group">
+                    <input type="text" id="courserepo" class="form-control" placeholder="Provide a link to repo"
+                           ng-model="course.repo" ng-blur="updateRepository(course)">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <select name="" id="" class="form-control" ng-model="course.status"
+                            ng-change="updateStatus(course)">
+                      <option value="Not started">Not started</option>
+                      <option value="In progress">In progress</option>
+                      <option value="Finished">Finished</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+            </li>
+          </ul>
+
+
+
+
+        </uib-tab>
+      </uib-tabset>
 
 
     </div>
