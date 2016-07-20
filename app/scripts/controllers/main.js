@@ -18,9 +18,9 @@ angular.module('ossuClientApp')
       localStorageService.set(key, value);
     }
 
-    var openedModalKey = '653c5f9';
+    var openedModalKey = '7296425a43a9208958f0473cc733489c67e8a88a';
 
-    if (checkLocalStorage(openedModalKey)) {
+    if (!checkLocalStorage(openedModalKey)) {
       $uibModal.open({
         animation: true,
         backdrop: 'static',
