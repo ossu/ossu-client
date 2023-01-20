@@ -16,7 +16,7 @@
     "bootstrap-material-design": "master",
     "font-awesome": "~4.5.0",
     "AngularJS-Toaster": "angularjs-toaster#~1.2.0",
-    "angular-bootstrap": "~1.2.5",
+    "angular-bootstrap": "0.14.3",
     "angular-local-storage": "~0.2.7"
   },
   "overrides": {
